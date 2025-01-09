@@ -5,10 +5,10 @@ metadata:
   labels:
     {{- include "nginx-port-configurator.labels" . | nindent 4 }}
 rules:
-  - apiGroups: ["v1"]
+  - apiGroups: [""]
     resources: ["services"]
     verbs: ["list", "get", "watch"]
-  - apiGroups: ["kyverno.io/v1"]
+  - apiGroups: ["kyverno.io"]
     resources: ["clusterpolicies"]
     verbs: ["*"]
 ---
@@ -20,7 +20,7 @@ metadata:
   labels:
     {{- include "nginx-port-configurator.labels" . | nindent 4 }}
 rules:
-  - apiGroups: ["v1", "apps/v1"]
+  - apiGroups: ["", "apps"]
     resources: ["services", "deployments", "configmaps"]
     verbs: ["*"]
 ---
