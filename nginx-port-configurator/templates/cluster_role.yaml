@@ -6,10 +6,10 @@ metadata:
     {{- include "nginx-port-configurator.labels" . | nindent 4 }}
 rules:
   - apiGroups: ["v1"]
-    resources: ["Service"]
+    resources: ["services"]
     verbs: ["list", "get", "watch"]
   - apiGroups: ["kyverno.io/v1"]
-    resources: ["ClusterPolicy"]
+    resources: ["clusterpolicies"]
     verbs: ["*"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -21,7 +21,7 @@ metadata:
     {{- include "nginx-port-configurator.labels" . | nindent 4 }}
 rules:
   - apiGroups: ["v1", "apps/v1"]
-    resources: ["Service", "Deployment", "ConfigMap"]
+    resources: ["services", "deployments", "configmaps"]
     verbs: ["*"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
